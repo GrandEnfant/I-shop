@@ -21,7 +21,7 @@ Vue.component('products', {
                     this.filtered.push(el);
                 }
             });
-        this.$parent.getJson(`getProducts.json`)
+        this.$parent.getJson(`https://raw.githubusercontent.com/GrandEnfant/I-shop/master/getProducts.json`)
             .then(data => {
                 for(let el of data){
                     this.products.push(el);
@@ -39,13 +39,15 @@ Vue.component('products', {
 });
 Vue.component('product', {
     props: ['product', 'img'],
-    template: `<div><div class="product" ">
-            <a href="singlePage.html" class="product__link"><img class="product__img" src="item.src_img" alt="product"></a>
+    template: `<div><div class="product">
+            <a href="singlePage.html" 
+            class="product__link">
+            <img class="product_img" :src="product.src_img" alt="product"></a>
             <div class="product__info">
                 <a href="singlePage.html">
                     <p class="product__text">{{product.product_name}}</p>
                 </a><span class="product__price">{{product.price}} </span></div>
-            <a href="#" class="product__add"><img :src=product.src_img alt="cart add">add to cart</a>
+            <a href="#" class="product__add"><img :src="product.src_img" alt="cart add">add to cart</a>
         </div> </div>`
 })
 
