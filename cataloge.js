@@ -39,13 +39,13 @@ Vue.component('products', {
 });
 Vue.component('product', {
     props: ['product', 'img'],
-    template: `<div><div class="product" v-for="item of products">
+    template: `<div><div class="product" ">
             <a href="singlePage.html" class="product__link"><img class="product__img" src="item.src_img" alt="product"></a>
             <div class="product__info">
                 <a href="singlePage.html">
-                    <p class="product__text">{{item.product_name}}</p>
-                </a><span class="product__price">{{item.price}} </span></div>
-            <a href="#" class="product__add"><img :src=item.src_img alt="cart add">add to cart</a>
+                    <p class="product__text">{{product.product_name}}</p>
+                </a><span class="product__price">{{product.price}} </span></div>
+            <a href="#" class="product__add"><img :src=product.src_img alt="cart add">add to cart</a>
         </div> </div>`
 })
 
