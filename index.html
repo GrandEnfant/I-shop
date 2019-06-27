@@ -326,7 +326,9 @@
     </div>
     
     <div class="productBox container">
-        <div class="products"><products ref="products"></products> </div>
+        <div class="products"><products ref="products" :products="filtered" :img="imgCatalog"
+                                        @add-product="addProduct"></products>
+        </div>
     </div>
     <a class="browseAll" href="#">
         <div class="browseAll">Browse All Product
