@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 * {
     margin: 0;
     padding: 0;
@@ -2295,15 +2295,24 @@ input[type=range]::-webkit-slider-thumb {
 
 .drop_cart {
     top: 79px;
-    left: 1404px;
+    left: 1000px;
     display: flex;
     flex-wrap: wrap;
     width: 350px;
 }
 
+.cart_block {
+    top: 79px;
+    left: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 350px;
+}
+
+
 .absolute {
     top: 80px;
-    left: 1404px;
+    left: 800px;
 }
 
 .button_account:hover .drop_cart {

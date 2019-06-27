@@ -20,31 +20,32 @@
                         <input class="form search-field" type="text" placeholder="Search for item..." > </form>
             </div>
             <div class="header-right">
-                <a href="Shopping_cart.html"> <img src="img/Forma1.png" alt="cart"></a> <a class="button_account" href="#">My Account <i class="fas fa-sort-down"></i> 
-                        <div class="drop absolute">
-                           <div class="drop_cart">
-                            <div class="cart_items">
-                            <div class="cart_column"><img class="cart_img" src="img/cart_img1.jpg" alt=""></div>
-                            <div class="cart_column2">
-                                <h3 class="cart_name_item">Rebox zane</h3>
-                                <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
-                                <p class="cart_price"> 1 x $250 </div>
-                            <div class="cart_column"> <i class="fas fa-times-circle"></i> </div>
-                <!------------------------------------------------------------------------------------------------->
-                            <div class="cart_column"><img class="cart_img" src="img/cart_img1.jpg" alt=""></div>
-                            <div class="cart_column2">
-                                <h3 class="cart_name_item">Rebox zane</h3>
-                                <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
-                                <p class="cart_price"> 1 x $250 </div>
-                            <div class="cart_column"> <i class="fas fa-times-circle"></i> </div>
- </div>
-                            <div class="cart_total"> 
-                             <h3 class="cart_totat_h3"> Total </h3>
-                             <h3 class="carrt_total_h3"> $500.00</h3></div>
-                            <button href="#" class="cart_button">Checkout</button>
-                <button class="cart_button"> Go to cart </button>
-            </div>
-        </div>
+                 <!--<img src="img/Forma1.png" alt="cart"><a class="button_account" href="#">My Account <i class="fas fa-sort-down"></i>-->
+                <img src="img/Forma1.png" alt="cart"><cart ref="cart"></cart>
+                        <!--<div class="drop absolute">-->
+                           <!--<div class="drop_cart">-->
+                            <!--<div class="cart_items">-->
+                            <!--<div class="cart_column"><img class="cart_img" src="img/cart_img1.jpg" alt=""></div>-->
+                            <!--<div class="cart_column2">-->
+                                <!--<h3 class="cart_name_item">Rebox zane</h3>-->
+                                <!--<div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>-->
+                                <!--<p class="cart_price"> 1 x $250 </div>-->
+                            <!--<div class="cart_column"> <i class="fas fa-times-circle"></i> </div>-->
+                <!--&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+                            <!--<div class="cart_column"><img class="cart_img" src="img/cart_img1.jpg" alt=""></div>-->
+                            <!--<div class="cart_column2">-->
+                                <!--<h3 class="cart_name_item">Rebox zane</h3>-->
+                                <!--<div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>-->
+                                <!--<p class="cart_price"> 1 x $250 </div>-->
+                            <!--<div class="cart_column"> <i class="fas fa-times-circle"></i> </div>-->
+ <!--</div>-->
+                            <!--<div class="cart_total"> -->
+                             <!--<h3 class="cart_totat_h3"> Total </h3>-->
+                             <!--<h3 class="carrt_total_h3"> $500.00</h3></div>-->
+                            <!--<button href="#" class="cart_button">Checkout</button>-->
+                <!--<button class="cart_button"> Go to cart </button>-->
+            <!--</div>-->
+        <!--</div>-->
         </a> </div>
         </div>
     </header>
@@ -326,9 +327,8 @@
     </div>
     
     <div class="productBox container">
-        <div class="products"><products ref="products" :products="filtered" :img="imgCatalog"
-                                        @add-product="addProduct"></products>
-        </div>
+        <products ref="products"></products>
+
     </div>
     <a class="browseAll" href="#">
         <div class="browseAll">Browse All Product
@@ -451,3 +451,22 @@
 </body>
 
 </html>
+
+
+
+
+
+
+<div class="cart-item" >
+                <div class="drop absolute">
+                           <div class="drop_cart">
+                            <div class="cart_items">
+                            <div class="cart_column"><img class="cart_img" :src="img" alt=""></div>
+                            <div class="cart_column2">
+                                <h3 class="cart_name_item">{{cartItem.product_name}}</h3>
+                                <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                                <p class="cart_price"> {{cartItem.quantity}} </div>
+                                <div class="cart_column"> <i class="fas fa-times-circle"></i> </div> </div>
+                    </div>
+    </div>
+</div>

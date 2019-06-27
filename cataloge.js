@@ -29,7 +29,7 @@ Vue.component('products', {
                 }
             })
     },
-    template: `<div class="products">
+    template: `<div class="product_box" >
         <product 
         v-for="product of filtered" 
         :key="product.id_product"
@@ -39,7 +39,7 @@ Vue.component('products', {
 });
 Vue.component('product', {
     props: ['product', 'img'],
-    template: `<div><div class="product">
+    template: `<div class="product">
             <a href="singlePage.html" 
             class="product__link">
             <img class="product_img" :src="product.src_img" alt="product"></a>
@@ -47,8 +47,8 @@ Vue.component('product', {
                 <a href="singlePage.html">
                     <p class="product__text">{{product.product_name}}</p>
                 </a><span class="product__price">{{product.price}} </span></div>
-            <a href="#" class="product__add"><img :src="product.src_img" alt="cart add">add to cart</a>
-        </div> </div>`
+            <a @click="$root.$refs.cart.addProduct(product)" class="product__add"><img src="img/Forma1.png" alt="cart add">add to cart</a>
+        </div>`
 })
 
 
