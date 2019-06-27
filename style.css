@@ -1562,6 +1562,8 @@ input[type=range]::-webkit-slider-thumb {
     top: 47px;
     left: -7px;
     z-index: 99;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .drop_last {
@@ -1610,7 +1612,6 @@ input[type=range]::-webkit-slider-thumb {
 .drop:before {
     content: "";
     width: 12px;
-    height: 12px;
     position: absolute;
     border-left: 1px solid #d7d7d7;
     border-top: 1px solid #d7d7d7;
@@ -1619,7 +1620,13 @@ input[type=range]::-webkit-slider-thumb {
     left: 30px;
     transform: rotate(45deg);
     z-index: 99;
+    display: flex;
+    flex-direction: column;
+
+    
 }
+
+
 
 .drop_last:before {
     content: "";
@@ -2307,6 +2314,7 @@ input[type=range]::-webkit-slider-thumb {
     display: flex;
     flex-wrap: wrap;
     width: 350px;
+    height: 750px;
 }
 
 

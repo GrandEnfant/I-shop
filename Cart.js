@@ -50,6 +50,7 @@ Vue.component('cart', {
     template: `<div>
  <a class="button_account" @click="showCart = !ShowCart">My Account 
 <div class="cart-block" v-show="showCart">
+<div class="drop absolute">
             <p v-if="!cartItems.length">Cart is empty</p>
             <cart-item 
             v-for="item of cartItems" 
@@ -57,14 +58,14 @@ Vue.component('cart', {
             :img="imgCart"
             :cart-item="item"
             @remove="remove"></cart-item>
+        </div></a>
         </div>
 </div>`
 });
 
 Vue.component('cart-item', {
     props: ['cartItem', 'img'],
-    template: `<div class="cart-item" >
-                <div class="drop absolute">
+    template: `  <div class="cart-item" >
                            <div class="drop_cart">
                             <div class="cart_items">
                             <div class="cart_column"><img class="cartItem.src_img" :src="img" alt=""></div>
@@ -72,9 +73,9 @@ Vue.component('cart-item', {
                                 <h3 class="cart_name_item">{{cartItem.product_name}}</h3>
                                 <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
                                 <p class="cart_price"> {{cartItem.quantity}}</p> </div>
-                            <div class="cart_column"> <i @click="$emit('remove', cartItem)" class="fas fa-times-circle" ></i> </div></div>
+                            <div class="cart_column"> <i @click="$emit('remove', cartItem)" class="fas fa-times-circle"></i> </div></div>
                     </div>
-    </div>
+ 
 </div>`
                
             //     <div class="product-bio">
