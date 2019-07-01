@@ -4,7 +4,8 @@ Vue.component('cart', {
           cartUrl: `/getBasket.json`,
           cartItems: [],
           showCart: false,
-          imgCart: `https://placehold.it/50x100`
+          imgCart: `https://placehold.it/50x100`, 
+          total: 0,
       }
     },
     methods: {
@@ -47,35 +48,45 @@ Vue.component('cart', {
                 }
             });
     },
+    computed: {
+      totalPrice: function(cartItems) {
+        return this.cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);  
+      }  
+    },
     template: `<div>
- <a class="button_account" @click="showCart = !ShowCart">My Account 
-<div class="cart-block" v-show="showCart">
-<div class="drop absolute">
+ <a class="button_account" @click="showCart = !showCart">My Account 
+<div class="cart-block">
+<div class="drop absolute width" style="display:none;" v-show="showCart">
             <p v-if="!cartItems.length">Cart is empty</p>
             <cart-item 
             v-for="item of cartItems" 
             :key="item.id_product"
             :img="imgCart"
             :cart-item="item"
+            :totalPrice="total"
             @remove="remove"></cart-item>
-        </div></a>
-        </div>
-</div>`
+ <div class="cart_total"> 
+                             <h3 class="cart_totat_h3"> Total </h3>
+                             <h3 class="carrt_total_h3">{{totalPrice}}  </h3></div>
+                            <button href="#" class="cart_button">Checkout</button>
+                <button class="cart_button"> Go to cart </button>
+    </div> </div></a> </div>`
 });
 
 Vue.component('cart-item', {
     props: ['cartItem', 'img'],
-    template: `  <div class="cart-item" >
+    template: `<div class="cart-item" >
                            <div class="drop_cart">
                             <div class="cart_items">
-                            <div class="cart_column"><img class="cartItem.src_img" :src="img" alt=""></div>
+                            <div class="cart_column"><img class="src_img" style="height:100px;" :src="cartItem.src_img" alt=""></div>
                             <div class="cart_column2">
                                 <h3 class="cart_name_item">{{cartItem.product_name}}</h3>
                                 <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
-                                <p class="cart_price"> {{cartItem.quantity}}</p> </div>
-                            <div class="cart_column"> <i @click="$emit('remove', cartItem)" class="fas fa-times-circle"></i> </div></div>
-                    </div>
- 
+                                <p class="cart_price"> {{cartItem.quantity}} x {{cartItem.price}}</p> </div>
+                            <div class="cart_column"> <i @click="$emit('remove', cartItem)" class="fas fa-times-circle"></i> 
+        </div>
+         </div>
+        </div>
 </div>`
                
             //     <div class="product-bio">
