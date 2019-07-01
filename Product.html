@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> </head>
 
 <body>
+   <div id="app">
     <header class="header">
         <div class="container header-flex">
             <div class="header-left">
@@ -17,7 +18,7 @@
                     <button class="button_browse">Browse</button>
                     <input class="form" type="text" placeholder="Search for item..."> </form>
             </div>
-            <div class="header-right"> <img src="img/Forma1.png" alt="cart"> <a class="button_account" href="Checkout.html">My Account</a> </div>
+            <div class="header-right"> <img src="img/Forma1.png" alt="cart"> <cart ref="cart"></cart> </div>
         </div>
     </header>
     <nav class="navigation">
@@ -375,7 +376,9 @@
                 </select>
             </div>
             <div class="product_box">
-                <div class="product">
+                 <products ref="products"></products>
+<!--
+                   <div class="product">
                     <a href="#" class="product__link"><img class="product__img" src="img/Layer43.jpg" alt="product"></a>
                     <div class="product__info">
                         <a href="#">
@@ -483,6 +486,7 @@
                         <a href="#" class="wishlist"><img class="wishlist_img" src="img/wishlist.png" alt=""> </a>
                     </div>
                 </div>
+-->
             </div>
         </div>
     </div>
@@ -610,6 +614,11 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="script.js"></script>
+    <script src = "cataloge.js"></script>
+    <script src = "Cart.js"></script>
+    </div>
 </body>
 
 </html>
