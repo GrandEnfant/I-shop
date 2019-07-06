@@ -88,18 +88,26 @@ Vue.component('cart-item', {
          </div>
         </div>
 </div>`
-               
-            //     <div class="product-bio">
-            //         <img :src="img" alt="Some image">
-            //         <div class="product-desc">
-            //             <p class="product-title">{{cartItem.product_name}}</p>
-            //             <p class="product-quantity">Quantity: {{cartItem.quantity}}</p>
-            //             <p class="product-single-price">$ {{cartItem.price}} each</p>
-            //         </div>
-            //     </div>
-            //     <div class="right-block">
-            //         <p class="product-price">$ {{cartItem.quantity*cartItem.price}}</p>
-            //         <button class="del-btn" @click="$emit('remove', cartItem)">&times;</button>
-            //     </div>
-            // </div>`
+})
+
+Vue.component('cart-item', {
+    props: ['cartItem', 'img'],
+   template: `<div class="item">
+    <div class="item1"></div>
+    </div>
+    <div class="items_name">
+    <h3 class="name_item"> {{cartItem.product_name}}</h3>
+<br>
+<p class="atribute_characteristic"> Color: </p>
+<p class="volue_characteristic"> Red </p>
+    <br>
+    <p class="atribute_characteristic"> Size: </p>
+<p class="volue_characteristic"> XII </p>
+    </div>
+    <div class="item"> {{cartItem.price}} </div>
+    <div class="item">
+    <input type="number" class="item_quantity"> </div>
+    <div class="item"> Free </div>
+    <div class="item">{{cartItem.quantity}} x {{cartItem.price}} </div>
+    <div class="item"><i class="fas fa-times-circle"></i> </div>`
 })
