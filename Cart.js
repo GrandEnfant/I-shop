@@ -6,6 +6,7 @@ Vue.component('cart', {
           showCart: false,
           imgCart: `https://placehold.it/50x100`, 
           total: 0,
+          cart: null,
       }
     },
     methods: {
@@ -15,10 +16,14 @@ Vue.component('cart', {
                     if(data.result){
                         let find = this.cartItems.find(el => el.id_product === product.id_product);
                         if(find){
-                            find.quantity++
+                            find.quantity++;
+                            let stringCart =  JSON.stringify(this.cartItems);
+                            localStorage.setItem('cart', stringCart);
                         } else {
                             let prod = Object.assign({quantity: 1}, product);
                             this.cartItems.push(prod);
+                            let stringCart =  JSON.stringify(this.cartItems);
+                            localStorage.setItem('cart', stringCart);
                         }
                     } else {
                         console.log('error!')
@@ -30,9 +35,13 @@ Vue.component('cart', {
                 .then(data => {
                     if(data.result){
                         if(product.quantity > 1){
-                            product.quantity--
+                            product.quantity--;
+                            let stringCart =  JSON.stringify(this.cartItems);
+                    localStorage.setItem('cart', stringCart);
                         } else {
                             this.cartItems.splice(this.cartItems.indexOf(product), 1);
+                            let stringCart =  JSON.stringify(this.cartItems);
+                    localStorage.setItem('cart', stringCart);
                         }
                     } else {
                         console.log('error!')
@@ -41,6 +50,7 @@ Vue.component('cart', {
         },
     },
     mounted(){
+        this.cartItems = JSON.parse(localStorage.getItem('cart'));
         this.$parent.getJson(`${API + this.cartUrl}`)
             .then(data => {
                 for(let el of data.contents){
@@ -88,26 +98,18 @@ Vue.component('cart-item', {
          </div>
         </div>
 </div>`
-})
-
-Vue.component('cart-item', {
-    props: ['cartItem', 'img'],
-   template: `<div class="item">
-    <div class="item1"></div>
-    </div>
-    <div class="items_name">
-    <h3 class="name_item"> {{cartItem.product_name}}</h3>
-<br>
-<p class="atribute_characteristic"> Color: </p>
-<p class="volue_characteristic"> Red </p>
-    <br>
-    <p class="atribute_characteristic"> Size: </p>
-<p class="volue_characteristic"> XII </p>
-    </div>
-    <div class="item"> {{cartItem.price}} </div>
-    <div class="item">
-    <input type="number" class="item_quantity"> </div>
-    <div class="item"> Free </div>
-    <div class="item">{{cartItem.quantity}} x {{cartItem.price}} </div>
-    <div class="item"><i class="fas fa-times-circle"></i> </div>`
+               
+            //     <div class="product-bio">
+            //         <img :src="img" alt="Some image">
+            //         <div class="product-desc">
+            //             <p class="product-title">{{cartItem.product_name}}</p>
+            //             <p class="product-quantity">Quantity: {{cartItem.quantity}}</p>
+            //             <p class="product-single-price">$ {{cartItem.price}} each</p>
+            //         </div>
+            //     </div>
+            //     <div class="right-block">
+            //         <p class="product-price">$ {{cartItem.quantity*cartItem.price}}</p>
+            //         <button class="del-btn" @click="$emit('remove', cartItem)">&times;</button>
+            //     </div>
+            // </div>`
 })
