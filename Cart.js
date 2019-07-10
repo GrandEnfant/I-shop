@@ -48,6 +48,9 @@ Vue.component('cart', {
                     }
                 })
         },
+        showDateCart(){
+            this.cartItems = JSON.parse(localStorage.getItem('cart'));
+        },
     },
     mounted(){
         this.$parent.getJson(`${API + this.cartUrl}`)
@@ -56,7 +59,6 @@ Vue.component('cart', {
                     this.cartItems.push(el);
                 }
             });
-//         if(this.CartItems != 0) {this.cartItems = JSON.parse(localStorage.getItem('cart'));}
     },
     computed: {
       totalPrice: function(cartItems) {
@@ -64,7 +66,7 @@ Vue.component('cart', {
       }  
     },
     template: `<div>
- <a class="button_account" @click="showCart = !showCart">My Account 
+ <a class="button_account" @click="showCart = !showCart" @click="$root.$refs.cart.showDataCart()">My Account 
 <div class="cart-block">
 <div class="drop absolute width" style="display:none;" v-show="showCart">
             <p v-if="!cartItems.length">Cart is empty</p>
@@ -78,26 +80,27 @@ Vue.component('cart', {
  <div class="cart_total"> 
                              <h3 class="cart_totat_h3"> Total </h3>
                              <h3 class="carrt_total_h3">{{totalPrice}}  </h3></div>
-                            <button href="#" class="cart_button">Checkout</button>
-                <button class="cart_button"> Go to cart </button>
+                            <button href="" class="cart_button">Checkout</button>
+                <a class="cart_button" href="Shopping_cart.html"> Go to cart </a>
     </div> </div></a> </div>`
 });
 
 Vue.component('cart-item', {
     props: ['cartItem', 'img'],
     template: `<div class="cart-item" >
-                           <div class="drop_cart">
-                            <div class="cart_items">
-                            <div class="cart_column"><img class="src_img" style="height:100px;" :src="cartItem.src_img" alt=""></div>
-                            <div class="cart_column2">
-                                <h3 class="cart_name_item">{{cartItem.product_name}}</h3>
-                                <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
-                                <p class="cart_price"> {{cartItem.quantity}} x {{cartItem.price}}</p> </div>
-                            <div class="cart_column"> <i @click="$emit('remove', cartItem)" class="fas fa-times-circle"></i> 
+    <div class="drop_cart">
+        <div class="cart_items">
+            <div class="cart_column"><img class="src_img" style="height:100px;" :src="cartItem.src_img" alt=""></div>
+            <div class="cart_column2">
+                <h3 class="cart_name_item">{{cartItem.product_name}}</h3>
+                <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                <p class="cart_price"> {{cartItem.quantity}} x {{cartItem.price}}</p> </div>
+            <div class="cart_column"> <i @click="$emit('remove', cartItem)" class="fas fa-times-circle"></i>
+            </div>
         </div>
-         </div>
-        </div>
-</div>`
+    </div>
+</div>
+`
                
             //     <div class="product-bio">
             //         <img :src="img" alt="Some image">
