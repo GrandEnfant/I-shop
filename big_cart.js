@@ -1,4 +1,4 @@
-Vue.component('cart', {
+Vue.component('big_cart', {
     data(){
         return {
             cartUrl: `/getBasket.json`,
@@ -41,6 +41,7 @@ Vue.component('cart', {
         },
     },
     mounted(){
+         this.cartItems = JSON.parse(localStorage.getItem('cart'));
         this.$parent.getJson(`${API + this.cartUrl}`)
             .then(data => {
                 for(let el of data.contents){
@@ -53,10 +54,7 @@ Vue.component('cart', {
             return this.cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
         }
     },
-    template: `<div>
- <a class="button_account" @click="showCart = !showCart">My Account 
-<div class="cart-block">
-<div class="drop absolute width" style="display:none;" v-show="showCart">
+    template: `<div class="string">
             <p v-if="!cartItems.length">Cart is empty</p>
             <cart-item 
             v-for="item of cartItems" 
@@ -66,31 +64,29 @@ Vue.component('cart', {
             :totalPrice="total"
             @remove="remove"></cart-item>
  <div class="cart_total"> 
-            <h3 class="cart_totat_h3"> Total </h3>
-            <h3 class="carrt_total_h3">{{totalPrice}}  </h3></div>
-            <button href="#" class="cart_button">Checkout</button>
-                <button class="cart_button"> Go to cart </button>
-    </div> </div></a> </div>`
+    </div>`
 });
 
 Vue.component('cart-item', {
     props: ['cartItem', 'img'],
-    template: `<div class="item">
-    <div class="item1"></div>
-    </div>
+    template: `<div class="row"> 
+    <div class="Cart-content">
+    <div class="item1"><img class="src_img" style="height:100px;" :src="cartItem.src_img" alt="">
+</div>
+   
     <div class="items_name">
     <h3 class="name_item"> {{cartItem.product_name}}</h3>
-<br>
-<p class="atribute_characteristic"> Color: </p>
-<p class="volue_characteristic"> Red </p>
+    <br>
+    <p class="atribute_characteristic"> Color: </p>
+    <p class="volue_characteristic"> Red </p>
     <br>
     <p class="atribute_characteristic"> Size: </p>
-<p class="volue_characteristic"> XII </p>
+    <p class="volue_characteristic"> XII </p>
     </div>
     <div class="item"> {{cartItem.price}} </div>
     <div class="item">
     <input type="number" class="item_quantity"> </div>
     <div class="item"> Free </div>
     <div class="item">{{cartItem.quantity}} x {{cartItem.price}} </div>
-    <div class="item"><i class="fas fa-times-circle"></i> </div>`
+    <div class="item"><i @click="$emit('remove', cartItem)" class="fas fa-times-circle"></i> </div>`
 })

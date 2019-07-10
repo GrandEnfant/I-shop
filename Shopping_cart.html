@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i|Montserrat:100,300,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> </head>
+        
+
 
 <body>
+      <div id="app">
     <header class="header">
         <div class="container header-flex">
             <div class="header-left">
@@ -18,9 +21,12 @@
                     <input class="form" type="text" placeholder="Search for item..."> </form>
             </div>
             <div class="header-right">
-                <a href="#"><img src="img/Forma1.png" alt="cart"></a> <a class="button_account" href="#">My Account</a> </div>
+          </div>
         </div>
+       
     </header>
+  
+    
     <nav class="navigation">
         <ul class="menu container">
             <li class="menu_list"><a class="menu_link" href="Product.html">HOME</a>
@@ -260,6 +266,8 @@
             </nav>
         </div>
     </div>
+<!--     <div class="big_cart">-->
+     
     <div class="Cart-content container">
         <div class="item name_colums">Products Details</div>
         <div class="item name_colums"></div>
@@ -269,63 +277,9 @@
         <div class="item name_colums">Subtotal</div>
         <div class="item name_colums">Action</div>
         <!-------------------------------------------------------------------->
-        <div class="item">
-            <div class="item1"></div>
-        </div>
-        <div class="items_name">
-            <h3 class="name_item"> Mango people T-shirt</h3>
-            <br>
-            <p class="atribute_characteristic"> Color: </p>
-            <p class="volue_characteristic"> Red </p>
-            <br>
-            <p class="atribute_characteristic"> Size: </p>
-            <p class="volue_characteristic"> XII </p>
-        </div>
-        <div class="item"> $150 </div>
-        <div class="item">
-            <input type="number" class="item_quantity"> </div>
-        <div class="item"> Free </div>
-        <div class="item">$300 </div>
-        <div class="item"><i class="fas fa-times-circle"></i> </div>
-        <!------------------------------------------------------->
-        <div class="item">
-            <div class="item1"></div>
-        </div>
-        <div class="items_name">
-            <h3 class="name_item"> Mango people T-shirt</h3>
-            <br>
-            <p class="atribute_characteristic"> Color: </p>
-            <p class="volue_characteristic"> Red </p>
-            <br>
-            <p class="atribute_characteristic"> Size: </p>
-            <p class="volue_characteristic"> XII </p>
-        </div>
-        <div class="item"> $150 </div>
-        <div class="item">
-            <input type="number" class="item_quantity"> </div>
-        <div class="item"> Free </div>
-        <div class="item">$300 </div>
-        <div class="item"><i class="fas fa-times-circle"></i> </div>
-        <!--------------------------------------------------------->
-        <div class="item">
-            <div class="item1"></div>
-        </div>
-        <div class="items_name">
-            <h3 class="name_item"> Mango people T-shirt</h3>
-            <br>
-            <p class="atribute_characteristic"> Color: </p>
-            <p class="volue_characteristic"> Red </p>
-            <br>
-            <p class="atribute_characteristic"> Size: </p>
-            <p class="volue_characteristic"> XII </p>
-        </div>
-        <div class="item"> $150 </div>
-        <div class="item">
-            <input type="number" class="item_quantity"> </div>
-        <div class="item"> Free </div>
-        <div class="item">$300 </div>
-        <div class="item"><i class="fas fa-times-circle"></i> </div>
-    </div>
+       <big_cart ref="big_cart"> </big_cart>
+         </div> 
+<!--   </div>-->
     <div class="control_cart_button container"> <a href="#" class="button_cart">clear shopping cart </a> <a href="#" class="button_cart"> continue shopping </a> </div>
     <!------------------------------------------------------------------------------------------------------------------------------>
     <div class="order_info container">
@@ -430,6 +384,44 @@
             </div>
         </div>
     </footer>
+  
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="script.js"></script>
+    <script src = "cataloge.js"></script>
+    <script src = "Cart.js"></script>
+    <script src = "big_cart.js"></script>
+       </div>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<div class="item">
+    <div class="item1"></div>
+    </div>
+    <div class="items_name">
+    <h3 class="name_item"> {{cartItem.product_name}}</h3>
+<br>
+<p class="atribute_characteristic"> Color: </p>
+<p class="volue_characteristic"> Red </p>
+    <br>
+    <p class="atribute_characteristic"> Size: </p>
+<p class="volue_characteristic"> XII </p>
+    </div>
+    <div class="item"> {{cartItem.price}} </div>
+    <div class="item">
+    <input type="number" class="item_quantity"> </div>
+    <div class="item"> Free </div>
+    <div class="item">{{cartItem.quantity}} x {{cartItem.price}} </div>
+    <div class="item"><i class="fas fa-times-circle"></i> </div>-->

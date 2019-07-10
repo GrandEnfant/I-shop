@@ -6,6 +6,7 @@ Vue.component('cart', {
           showCart: false,
           imgCart: `https://placehold.it/50x100`, 
           total: 0,
+          stringCart: null
       }
     },
     methods: {
@@ -15,10 +16,14 @@ Vue.component('cart', {
                     if(data.result){
                         let find = this.cartItems.find(el => el.id_product === product.id_product);
                         if(find){
-                            find.quantity++
+                            find.quantity++;
+                             this.stringCart = JSON.stringify(this.cartItems);
+                            localStorage.setItem('cart', this.stringCart);
                         } else {
                             let prod = Object.assign({quantity: 1}, product);
                             this.cartItems.push(prod);
+                            this.stringCart =  JSON.stringify(this.cartItems);
+                            localStorage.setItem('cart', this.stringCart);
                         }
                     } else {
                         console.log('error!')
@@ -30,9 +35,13 @@ Vue.component('cart', {
                 .then(data => {
                     if(data.result){
                         if(product.quantity > 1){
-                            product.quantity--
+                            product.quantity--;
+                            let stringCart =  JSON.stringify(this.cartItems);
+                            localStorage.setItem('cart', stringCart);
                         } else {
                             this.cartItems.splice(this.cartItems.indexOf(product), 1);
+                            let stringCart =  JSON.stringify(this.cartItems);
+                            localStorage.setItem('cart', stringCart);
                         }
                     } else {
                         console.log('error!')
@@ -47,6 +56,7 @@ Vue.component('cart', {
                     this.cartItems.push(el);
                 }
             });
+//         if(this.CartItems != 0) {this.cartItems = JSON.parse(localStorage.getItem('cart'));}
     },
     computed: {
       totalPrice: function(cartItems) {
