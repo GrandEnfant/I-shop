@@ -6,7 +6,6 @@ Vue.component('cart', {
           showCart: false,
           imgCart: `https://placehold.it/50x100`, 
           total: 0,
-          cart: null,
       }
     },
     methods: {
@@ -16,14 +15,10 @@ Vue.component('cart', {
                     if(data.result){
                         let find = this.cartItems.find(el => el.id_product === product.id_product);
                         if(find){
-                            find.quantity++;
-                            let stringCart =  JSON.stringify(this.cartItems);
-                            localStorage.setItem('cart', stringCart);
+                            find.quantity++
                         } else {
                             let prod = Object.assign({quantity: 1}, product);
                             this.cartItems.push(prod);
-                            let stringCart =  JSON.stringify(this.cartItems);
-                            localStorage.setItem('cart', stringCart);
                         }
                     } else {
                         console.log('error!')
@@ -35,13 +30,9 @@ Vue.component('cart', {
                 .then(data => {
                     if(data.result){
                         if(product.quantity > 1){
-                            product.quantity--;
-                            let stringCart =  JSON.stringify(this.cartItems);
-                    localStorage.setItem('cart', stringCart);
+                            product.quantity--
                         } else {
                             this.cartItems.splice(this.cartItems.indexOf(product), 1);
-                            let stringCart =  JSON.stringify(this.cartItems);
-                    localStorage.setItem('cart', stringCart);
                         }
                     } else {
                         console.log('error!')
@@ -50,7 +41,6 @@ Vue.component('cart', {
         },
     },
     mounted(){
-        this.cartItems = JSON.parse(localStorage.getItem('cart'));
         this.$parent.getJson(`${API + this.cartUrl}`)
             .then(data => {
                 for(let el of data.contents){

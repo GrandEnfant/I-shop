@@ -8,11 +8,6 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-.width {
-    width: 350px;
-    display: none;    
-}
-
 .container {
     width: 1140px;
     margin: 0 auto;
@@ -1627,6 +1622,8 @@ input[type=range]::-webkit-slider-thumb {
     z-index: 99;
     display: flex;
     flex-direction: column;
+
+    
 }
 
 
@@ -2292,7 +2289,7 @@ input[type=range]::-webkit-slider-thumb {
     text-align: left;
 }
 
-.button_account:hover .width {
+.button_account:hover .drop {
     display: flex;
 }
 
@@ -2303,11 +2300,6 @@ input[type=range]::-webkit-slider-thumb {
     margin-top: 19px;
 }
 
-.src_img .cart_column {
-    height: 100px; 
-    width: 50px;
-    
-}
 .drop_cart {
     top: 79px;
     left: 1000px;
@@ -2328,7 +2320,7 @@ input[type=range]::-webkit-slider-thumb {
 
 .absolute {
     top: 80px;
-    left: 1416px;
+    left: 800px;
 }
 
 .button_account:hover .drop_cart {
