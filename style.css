@@ -2350,6 +2350,8 @@ input[type=range]::-webkit-slider-thumb {
     color: #f16d7f;
     background-color: white;
     margin: 19px auto;
+    line-height: 50px;
+    text-align: -webkit-center;
 }
 
 .cart_button:hover {
